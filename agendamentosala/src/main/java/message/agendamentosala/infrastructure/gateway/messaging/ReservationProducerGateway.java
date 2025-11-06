@@ -1,7 +1,6 @@
 package message.agendamentosala.infrastructure.gateway.messaging;
 
 import lombok.AllArgsConstructor;
-import message.agendamentosala.domain.model.Reservation;
 import message.agendamentosala.infrastructure.config.RabbitMQConfig;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.MessagePostProcessor;

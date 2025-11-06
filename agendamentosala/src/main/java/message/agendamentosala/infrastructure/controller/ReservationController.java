@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import message.agendamentosala.application.usecase.ScheduleReservationUseCase;
 import message.agendamentosala.domain.exception.ValidationException;
-import message.agendamentosala.domain.model.Reservation;
 import message.agendamentosala.infrastructure.controller.request.ReservationRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

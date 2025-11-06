@@ -2,7 +2,6 @@ package message.agendamentosala.infrastructure.gateway.persistence;
 
 import lombok.AllArgsConstructor;
 import message.agendamentosala.domain.entity.ReservationEntity;
-import message.agendamentosala.domain.model.Reservation;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
