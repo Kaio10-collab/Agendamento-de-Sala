@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import message.agendamentosala.domain.exception.ValidationException;
 import message.agendamentosala.domain.model.User;
 import message.agendamentosala.domain.validator.EmailValidator;
-import message.agendamentosala.infrastructure.gateway.persistence.UserPersistenceGateway;
+import message.agendamentosala.infrastructure.gateway.persistence.user.UserPersistenceGateway;
 import org.springframework.stereotype.Service;
 
 @Service

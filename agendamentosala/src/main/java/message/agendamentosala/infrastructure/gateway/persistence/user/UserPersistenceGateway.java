@@ -1,4 +1,4 @@
-package message.agendamentosala.infrastructure.gateway.persistence;
+package message.agendamentosala.infrastructure.gateway.persistence.user;
 
 import lombok.AllArgsConstructor;
 import message.agendamentosala.domain.model.User;
