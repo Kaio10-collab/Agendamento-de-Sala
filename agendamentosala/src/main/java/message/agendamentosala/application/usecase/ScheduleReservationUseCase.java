@@ -3,7 +3,7 @@ package message.agendamentosala.application.usecase;
 import lombok.RequiredArgsConstructor;
 import message.agendamentosala.domain.model.RoomName;
 import message.agendamentosala.infrastructure.gateway.messaging.ReservationProducerGateway;
-import message.agendamentosala.infrastructure.gateway.persistence.ReservationPersistenceGateway;
+import message.agendamentosala.infrastructure.gateway.persistence.UserPersistenceGateway;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class ScheduleReservationUseCase {
 
-    private final ReservationPersistenceGateway persistenceGateway;
+    private final UserPersistenceGateway persistenceGateway;
     private final ReservationProducerGateway producerGateway;
 
     public Reservation execute(String fullName, RoomName roomName, LocalDateTime startDateTime, LocalDateTime endDateTime) {
