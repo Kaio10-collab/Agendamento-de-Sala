@@ -1,7 +1,7 @@
 package message.agendamentosala.infrastructure.messaging;
 
 import lombok.AllArgsConstructor;
-import message.agendamentosala.application.usecase.ProcessCancellationUseCase;
+import message.agendamentosala.application.usecase.user.CreateUserUseCase;
 import message.agendamentosala.infrastructure.config.RabbitMQConfig;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CancellationConsumer {
 
-    private final ProcessCancellationUseCase cancellationUseCase;
+    private final CreateUserUseCase cancellationUseCase;
 
     @RabbitListener(queues = RabbitMQConfig.CANCELLATION_QUEUE)
     public void consumeCancellation(Long reservationId) {

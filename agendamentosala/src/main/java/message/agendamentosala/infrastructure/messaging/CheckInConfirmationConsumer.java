@@ -1,7 +1,7 @@
 package message.agendamentosala.infrastructure.messaging;
 
 import lombok.AllArgsConstructor;
-import message.agendamentosala.application.usecase.ProcessCheckInUseCase;
+import message.agendamentosala.application.usecase.user.ReadUserUseCase;
 import message.agendamentosala.infrastructure.config.RabbitMQConfig;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CheckInConfirmationConsumer {
 
-    private final ProcessCheckInUseCase checkInUseCase;
+    private final ReadUserUseCase checkInUseCase;
 
     @RabbitListener(queues = RabbitMQConfig.CHECK_IN_ROUTING_KEY)
     public void consumeCheckInConfirmation(String reservationId) {
