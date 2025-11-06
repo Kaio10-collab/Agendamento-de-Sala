@@ -1,7 +1,6 @@
 package message.agendamentosala.application.usecase;
 
 import lombok.RequiredArgsConstructor;
-import message.agendamentosala.domain.entity.ReservationStatus;
 import message.agendamentosala.domain.exception.ValidationException;
 import message.agendamentosala.infrastructure.gateway.persistence.ReservationPersistenceGateway;
 import org.springframework.stereotype.Service;

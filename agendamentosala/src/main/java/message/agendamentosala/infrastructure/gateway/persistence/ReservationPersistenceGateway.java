@@ -1,7 +1,7 @@
 package message.agendamentosala.infrastructure.gateway.persistence;
 
 import lombok.AllArgsConstructor;
-import message.agendamentosala.domain.entity.ReservationEntity;
+import message.agendamentosala.infrastructure.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,7 +13,7 @@ public class ReservationPersistenceGateway {
     private final ReservationRepository repository;
 
     public Reservation save(Reservation reservation) {
-        ReservationEntity entity = ReservationEntity.builder()
+        UserEntity entity = UserEntity.builder()
                 .id(reservation.id())
                 .fullName(reservation.fullName())
                 .roomName(reservation.roomName())
@@ -22,7 +22,7 @@ public class ReservationPersistenceGateway {
                 .status(reservation.status())
                 .build();
 
-        ReservationEntity savedEntity = repository.save(entity);
+        UserEntity savedEntity = repository.save(entity);
 
         return toDomain(savedEntity);
     }
@@ -32,7 +32,7 @@ public class ReservationPersistenceGateway {
                 .map(this::toDomain);
     }
 
-    private Reservation toDomain(ReservationEntity entity) {
+    private Reservation toDomain(UserEntity entity) {
         return new Reservation(
                 entity.getId(),
                 entity.getFullName(),
