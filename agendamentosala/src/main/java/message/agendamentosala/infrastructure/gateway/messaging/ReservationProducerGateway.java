@@ -1,6 +1,7 @@
 package message.agendamentosala.infrastructure.gateway.messaging;
 
 import lombok.AllArgsConstructor;
+import message.agendamentosala.domain.model.Reservation;
 import message.agendamentosala.infrastructure.config.RabbitMQConfig;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -16,44 +17,25 @@ public class ReservationProducerGateway {
 
     private final RabbitTemplate rabbitTemplate;
 
-    public void sendCancellationDelay(Reservation reservation) {
+    public void sendStandByTimeout(Reservation reservation) {
+        Long reservationId = reservation.id();
 
-        var checkInDeadline = reservation.startDateTime().plusMinutes(15);
-        long delayMillis = ChronoUnit.MILLIS.between(LocalDateTime.now(), checkInDeadline);
+        System.out.println("PT: PRODUCER - Enviando ID " + reservationId + " para a fila STAND_BY_DELAY.");
 
-        if (delayMillis < 0) {
-            delayMillis = 1;
-        }
-
-        var reservationId = reservation.id();
-
-        var finalDelayMillis = delayMillis;
-        MessagePostProcessor ttlProcessor = message -> {
-            message.getMessageProperties().setExpiration(String.valueOf(finalDelayMillis));
-            return message;
-        };
-
-        try {
-            rabbitTemplate.convertAndSend(
-                    RabbitMQConfig.DELAY_EXCHANGE,
-                    RabbitMQConfig.CANCELLATION_QUEUE,
-                    reservationId,
-                    ttlProcessor
-            );
-        } catch (AmqpException e) {
-            System.err.println("Failed to send cancellation delay message for ID: " + reservationId + ". Error: " + e.getMessage());
-        }
+        rabbitTemplate.convertAndSend(
+                RabbitMQConfig.STAND_BY_DELAY_EXCHANGE,
+                RabbitMQConfig.STAND_BY_DELAY_ROUTING_KEY,
+                reservationId
+        );
     }
 
     public void sendCheckInConfirmation(Long reservationId) {
-        try {
-            rabbitTemplate.convertAndSend(
-                    RabbitMQConfig.SCHEDULING_EXCHANGE,
-                    RabbitMQConfig.CHECK_IN_ROUTING_KEY,
-                    reservationId
-            );
-        } catch (AmqpException e) {
-            System.err.println("Failed to send check-in confirmation message for ID: " + reservationId + ". Error: " + e.getMessage());
-        }
+        System.out.println("PT: PRODUCER - Enviando ID " + reservationId + " para a fila CHECK_IN_QUEUE.");
+
+        rabbitTemplate.convertAndSend(
+                RabbitMQConfig.CHECK_IN_EXCHANGE,
+                RabbitMQConfig.CHECK_IN_ROUTING_KEY,
+                reservationId
+        );
     }
 }
