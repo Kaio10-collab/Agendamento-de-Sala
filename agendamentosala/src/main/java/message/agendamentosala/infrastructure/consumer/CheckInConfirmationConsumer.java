@@ -1,4 +1,4 @@
-package message.agendamentosala.infrastructure.messaging;
+package message.agendamentosala.infrastructure.consumer;
 
 import lombok.AllArgsConstructor;
 import message.agendamentosala.application.usecase.user.ReadUserUseCase;
