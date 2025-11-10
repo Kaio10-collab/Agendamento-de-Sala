@@ -1,4 +1,4 @@
-package message.agendamentosala.application.usecase.reservation;
+package message.agendamentosala.application.usecase.room;
 
 import lombok.RequiredArgsConstructor;
 import message.agendamentosala.domain.exception.ValidationException;

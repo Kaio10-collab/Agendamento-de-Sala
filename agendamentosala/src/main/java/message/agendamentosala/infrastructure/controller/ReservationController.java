@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import message.agendamentosala.application.usecase.checkin.ConfirmReservationUseCase;
 import message.agendamentosala.application.usecase.reservation.CreateReservationUseCase;
 import message.agendamentosala.application.usecase.reservation.DeleteReservationUseCase;
-import message.agendamentosala.application.usecase.reservation.ListAvailableRoomsUseCase;
+import message.agendamentosala.application.usecase.room.ListAvailableRoomsUseCase;
 import message.agendamentosala.application.usecase.checkin.TriggerCheckInUseCase;
 import message.agendamentosala.application.usecase.reservation.ReadReservationUseCase;
 import message.agendamentosala.domain.model.Reservation;
