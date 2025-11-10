@@ -1,4 +1,4 @@
-package message.agendamentosala.application.usecase.reservation;
+package message.agendamentosala.application.usecase.checkin;
 
 import lombok.RequiredArgsConstructor;
 import message.agendamentosala.domain.model.Reservation;

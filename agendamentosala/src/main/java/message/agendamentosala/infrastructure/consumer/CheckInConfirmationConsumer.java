@@ -1,7 +1,7 @@
 package message.agendamentosala.infrastructure.consumer;
 
 import lombok.AllArgsConstructor;
-import message.agendamentosala.application.usecase.reservation.ProcessCheckInUseCase;
+import message.agendamentosala.application.usecase.checkin.ProcessCheckInUseCase;
 import message.agendamentosala.infrastructure.config.RabbitMQConfig;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
