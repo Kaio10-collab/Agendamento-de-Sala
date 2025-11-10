@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import message.agendamentosala.application.usecase.user.UpdateUserUseCase;
 import message.agendamentosala.domain.exception.ValidationException;
-import message.agendamentosala.infrastructure.controller.request.ReservationRequest;
+import message.agendamentosala.infrastructure.controller.request.UserRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ public class ReservationController {
     private final UpdateUserUseCase scheduleUseCase;
 
     @PostMapping
-    public ResponseEntity<?> scheduleRoom(@Valid @RequestBody ReservationRequest request) {
+    public ResponseEntity<?> scheduleRoom(@Valid @RequestBody UserRequest request) {
         try {
             Reservation reservation = scheduleUseCase.execute(
                     request.fullName(),

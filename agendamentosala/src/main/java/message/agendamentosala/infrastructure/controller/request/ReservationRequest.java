@@ -1,24 +1,23 @@
 package message.agendamentosala.infrastructure.controller.request;
 
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import message.agendamentosala.domain.model.RoomName;
 
 import java.time.LocalDateTime;
 
-public record ReservationRequest (
+public record ReservationRequest(@NotNull(message = "Nome da sala é obrigatório")
+                                 RoomName roomName,
 
-        @NotBlank(message = "Nome completo é obrigatório")
-        String fullName,
+                                 @NotNull(message = "O número de pessoas necessárias é obrigatório.")
+                                 @Min(value = 1, message = "O número mínimo de pessoas exigido é 1.")
+                                 int requiredPeople,
 
-        @NotNull(message = "Nome da sala é obrigatório")
-        RoomName roomName,
+                                 @NotNull(message = "A data e hora de início são obrigatórias.")
+                                 @Future(message = "A data e hora de início devem ser no futuro.")
+                                 LocalDateTime startDateTime,
 
-        @NotNull(message = "Data e hora de início são obrigatórias")
-        @Future(message = "Deve ser no futuro")
-        LocalDateTime startDateTime,
-
-        @NotNull(message = "Data e hora de fim são obrigatórias")
-        LocalDateTime endDateTime)
-{ }
+                                 @NotNull(message = "A data e hora de término são obrigatórias.")
+                                 LocalDateTime endDateTime) {
+}
