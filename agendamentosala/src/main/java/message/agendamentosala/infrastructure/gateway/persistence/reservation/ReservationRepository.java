@@ -18,7 +18,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     Optional<ReservationEntity> findByRoomNameAndStatus(RoomName roomName, RoomStatus status);
     List<ReservationEntity> findByUserEmailAndStatusIn(String userEmail, List<RoomStatus> statuses);
 
-    @Query("SELECT r FROM reservation r WHERE r.roomName = :roomName AND r.status IN :statuses " +
+    @Query("SELECT r FROM ReservationEntity r WHERE r.roomName = :roomName AND r.status IN :statuses " +
             "AND (" +
             "(r.startDateTime < :endDateTime AND r.endDateTime > :startDateTime)" +
             ")")
